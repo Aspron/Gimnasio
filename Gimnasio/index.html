@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gimnasio FitLife</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Gimnasio FitLife</h1>
+        <nav>
+            <a href="#info">Información</a>
+            <a href="#cursos">Apuntarse a Cursos</a>
+            <a href="#reservas">Reserva de Máquinas</a>
+            <a href="#registro">Registro</a>
+        </nav>
+    </header>
+<section class="carousel">
+    <div class="carousel-container">
+        <img src="images/1.jpg" alt="Imagen 1" class="carousel-slide">
+        <img src="images/2.jpg" alt="Imagen 2" class="carousel-slide">
+        <img src="images/3.jpg" alt="Imagen 3" class="carousel-slide">
+    </div>
+    <button class="carousel-button prev" onclick="moveSlide(-1)">&#10094;</button>
+    <button class="carousel-button next" onclick="moveSlide(1)">&#10095;</button>
+</section>
+    <section id="info">
+        <h2>Sobre Nosotros</h2>
+        <p>Bienvenido a FitLife, el mejor gimnasio para alcanzar tus objetivos. Ofrecemos instalaciones de primera calidad y una variedad de clases para todos los niveles.</p>
+    </section>
+    <section id="cursos">
+        <h2>Apuntarse a Cursos</h2>
+        <p>Selecciona el curso que te interesa y regístrate para reservar tu lugar.</p>
+        <form>
+            <label for="curso">Elige un curso:</label>
+            <select id="curso" name="curso">
+                <option value="yoga">Yoga</option>
+                <option value="zumba">Zumba</option>
+                <option value="crossfit">CrossFit</option>
+                <option value="pilates">Pilates</option>
+            </select>
+            <button type="submit">Apuntarse</button>
+        </form>
+    </section>
+    <section id="reservas">
+        <h2>Reserva de Máquinas</h2>
+        <p>Reserva tu máquina para asegurarte de que esté disponible cuando llegues.</p>
+        <form>
+            <label for="maquina">Elige una máquina:</label>
+            <select id="maquina" name="maquina">
+                <option value="cinta">Cinta de Correr</option>
+                <option value="bicicleta">Bicicleta Estática</option>
+                <option value="pesas">Zona de Pesas</option>
+                <option value="eliptica">Elíptica</option>
+            </select>
+            <label for="hora">Hora de Reserva:</label>
+            <input type="time" id="hora" name="hora">
+            <button type="submit">Reservar</button>
+        </form>
+    </section>
+    <section id="registro">
+        <h2>Registro de Usuario</h2>
+        <form>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="contraseña">Contraseña:</label>
+            <input type="password" id="contraseña" name="contraseña" required>
+            <button type="submit">Registrarse</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Gimnasio FitLife. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const totalSlides = slides.length;
+
+    function updateSlide() {
+        const carouselContainer = document.querySelector('.carousel-container');
+        carouselContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+
+    function moveSlide(direction) {
+        currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+        updateSlide();
+    }
+    setInterval(() => moveSlide(1), 5000);
+</script>
